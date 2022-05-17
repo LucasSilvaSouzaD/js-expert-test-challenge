@@ -1,10 +1,11 @@
-const https = require('https')
-const POKE_API = 'https://pokeapi.co/api/v2/pokemon'
+const http = require('http')
+const PokemonService = require('./service/PokemonService')
 
 const routes = {
-    '/team:get': (request, response) => {
-        response.write('Pokemon - Team')
- 
+    '/team:get': async (request, response) => {
+        const pokemonService = new PokemonService()
+        const listPoke = await pokemonService.getRandomPokemon()
+        response.write(JSON.stringify(listPoke))
         return response.end()
     },
     default: (request, response) => {
@@ -13,7 +14,7 @@ const routes = {
     }
 }
 
-const handler = (request, response) => {
+const handler = async (request, response) => {
     const { url, method } = request
     const routeKey = `${url}:${method.toLowerCase()}`
     const chosen = routes[routeKey] || routes.default
@@ -23,4 +24,4 @@ const handler = (request, response) => {
     return chosen(request, response)
 }
 
-https.createServer(handler).listen(3000, () => console.info('🚀 Your API Running right here!'))
+http.createServer(handler).listen(3000, () => console.info('🚀 Your API Running right here!'))
