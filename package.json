@@ -18,5 +18,8 @@
     "unit"
   ],
   "author": "Wellington S. Almeida (WellsSA)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sinon": "^14.0.0"
+  }
 }

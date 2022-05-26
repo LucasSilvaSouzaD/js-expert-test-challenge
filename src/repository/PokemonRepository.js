@@ -1,5 +1,5 @@
-const request = require("../utils/Request")
-const POKE_API = 'https://pokeapi.co/api/v2/pokemon?limit=250'
+const request = require('../utils/Request')
+const POKE_API = 'https://pokeapi.co/api/v2/pokemon?limit=10'
 
 
 class PokemonRepository {
