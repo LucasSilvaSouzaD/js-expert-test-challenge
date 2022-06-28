@@ -1,11 +1,11 @@
-const PokemonRepository = require('../repository/PokemonRepository')
-
+const PokemonRepository = require('./../repository/PokemonRepository');
 
 class PokemonService {
-    async getRandomPokemon() {
-        const pokemon = new PokemonRepository()
-        return await pokemon.listPokemons()
-    }
+  constructor({ pokemonRepository } = {}) {
+    this.pokemonRepository = pokemonRepository || new PokemonRepository();
+  }
+
+  
 }
 
 module.exports = PokemonService;

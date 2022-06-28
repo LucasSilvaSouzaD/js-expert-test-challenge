@@ -4,9 +4,10 @@ const PokemonService = require('./service/PokemonService')
 const routes = {
     '/team:get': async (request, response) => {
         const pokemonService = new PokemonService()
-        const listPoke = await pokemonService.getRandomPokemon()
-        response.write(JSON.stringify(listPoke))
-        return response.end()
+        const team = "team"
+        response.write(JSON.stringify(team));
+
+        return response.end();
     },
     default: (request, response) => {
         response.write('Hello World')
